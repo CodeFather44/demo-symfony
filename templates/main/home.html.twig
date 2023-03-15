@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Coucou</h1>
+{# Ma zone de commentaire
+    sur plusieurs lignes
+#}
+    {% set prenom="Giovanni" %}
+    {% set nom="Lorenzo" %}
+    <h1>{{ nom | upper}}{{ prenom | capitalize }}</h1>
+    <h1>{{ nom | length }}</h1>
+    {# création d'un tableau de couleurs #}
+    {% set colors = ["blue","red","violet","orange"] %}
+    <div>Il y a {{ colors | length }} couleurs {{ colors | length > 1 ? 's' : '' }}dans mon tableau</div>
+
+    <div>{{ colors| join ('<br>') | raw }}</div>
+
+    {% for c in colors %}
+        <div style = "background-color: {{ c }}">{{ c }}</div>
+        <div>{{ loop.index }}</div>
+        <div>{{ loop.last }}</div>
+        {% if loop.last %}
+            <div>Dernière itération</div>
+        {% endif %}
+    {% endfor %}
+    {% set film = {
+        title: 'Ca',
+        year: '2017',
+        realisateur:'Scorsese'
+    } %}
+    <p>{{ film.title }} </p>
+    {% for key,val in film %}
+        <div>{{ key }} = {{ val }}</div>
+    {% endfor %}
+    {% set actors = [] %}
+    {% for a in actors %}
+    <div>{{ a }}</div>
+    {% else %}
+        <div>Pas d'acteurs</div>
+    {% endfor %}
+    {# filtre sur les dates #}
+    <div>Aujourd'hui, nouys sommes le {{ "now" | date('d/m/y H:i') }}</div>
+    <div>Aujourd'hui, nouys sommes dans l'année {{ "now" | date('y') }}</div>
+    <div>Dans un an, nous serons {{ "+1 year" | date('d/m/y') }}</div>
+
+{% endblock %}
+{% block title %}{{ parent() }} | home{% endblock %}

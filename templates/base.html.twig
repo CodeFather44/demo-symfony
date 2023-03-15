@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('CSS/app.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Poppins&family=Roboto&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ asset('img/icon.png') }}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block tile %}Serie{% endblock %}</title>
+</head>
+<body>
+{% include 'inc/nav.html.twig' %}
+
+    <header>
+        <h1>
+            <a href="{{ path('main_home') }}"><img src="{{ asset('img/logo.svg')}}"></a>
+        </h1>
+    </header>
+<main>
+    {%  block body %}{% endblock %}
+</main>
+<footer>
+    {%  include 'inc/nav.html.twig' %}
+    {{ "now" | date ("Y") }} Série
+</footer>
+</body>
+</html>
